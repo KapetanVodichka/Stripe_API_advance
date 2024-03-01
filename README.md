@@ -18,7 +18,5 @@
 Проект будет доступен по адресу "http://localhost:8001/"
 
 При развертывании Docker применяются команды:
- - python manage.py create_test_data
- - python manage.py createsuperuser
-.Создается admin-аккаунт login: admin password: admin
-.Создаются 2 объекта Item для тестирования
+ - python manage.py create_test_data (Создаются 2 объекта Item для тестирования)
+ - python manage.py createsuperuser (Создается admin-аккаунт login: admin password: admin)
