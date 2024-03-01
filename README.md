@@ -18,7 +18,7 @@
 Проект будет доступен по адресу "http://localhost:8001/"
 
 Для создания административного аккаунта и тестовых данных внутри Docker-контейнера:
-Взять CONTAINER_ID на котором запущено приложение прописав команду "-docker ps"
+ - Взять CONTAINER_ID на котором запущено приложение прописав команду "-docker ps"
  - docker exec -it <CONTAINER_ID> sh
  - python manage.py create_test_data
  - python manage.py createsuperuser
