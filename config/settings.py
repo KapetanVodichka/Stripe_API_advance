@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 from decouple import config
 
@@ -78,16 +78,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT': config('POSTGRES_PORT'),
+IS_DOCKER = os.path.exists('/.dockerenv')
+
+if IS_DOCKER:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('POSTGRES_DB'),
+            'USER': config('POSTGRES_USER'),
+            'PASSWORD': config('POSTGRES_PASSWORD'),
+            'HOST': config('POSTGRES_HOST', default='localhost'),
+            'PORT': config('POSTGRES_PORT', default='5432'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('POSTGRES_DB'),
+            'USER': config('POSTGRES_USER'),
+            'PASSWORD': config('POSTGRES_PASSWORD'),
+        }
+    }
 
 
 # Password validation
