@@ -1,4 +1,4 @@
-# Django Stripe API Backend
+# Django Stripe API Backend (advanced)
 
 Этот проект представляет собой Django + Stripe API бэкенд с функционалом покупки товаров через Stripe.
 
@@ -7,24 +7,15 @@
 1. Клонировать репозиторий:
  - git clone https://github.com/KapetanVodichka/Stripe_API.git
 
-2. Создать и активировать виртуальное окружение:
- - python -m venv venv
- - venv\Scripts\activate (Для Windows) или - source venv/bin/activate (Для Linux)
+2. В директории проекта создать файл .env по шаблону .env.sample и заполнить все пустые переменные
 
-3. Установите необходимые зависимости:
- - pip install -r requirements.txt
+3. Создайте аккаунт на (https://dashboard.stripe.com/test/apikeys) и скопируйте API-ключи в .env
 
-4. Создайте БД и установите её настройки (Stripe_API/config/settings (82-85 строки)):
-   *(Пример для PostgreSQL)*
- - psql -U your_username
- - CREATE DATABASE your_database_name;
+4. Запустите приложение с помощью Docker Compose:
+ - docker-compose up --build
 
-5. Создайте и примените миграции:
- - python manage.py makemigrations
- - python manage.py migrate
 
-6. Зарегистрируйтесь на сайте https://dashboard.stripe.com/test/apikeys, по ссылке https://dashboard.stripe.com/test/apikeys 
-скопируйте значения publishable key и secret key в ваш проект по пути Stripe_API/config/settings (131-132 строки).
+Проект будет доступен по адресу "http://localhost:8001/"
 
-7. Запустите проект:
- - python manage.py runserver
+Для создания административного аккаунта:
+ - python manage.py createsuperuser
